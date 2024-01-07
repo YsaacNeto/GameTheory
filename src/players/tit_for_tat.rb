@@ -1,4 +1,4 @@
-require './player.rb'
+require '../classes/player.rb'
 
 class Tit_for_tat < Player
   # run aqui carrega toda a estrategia do player tit for tat
