@@ -1,4 +1,4 @@
-require './player.rb'
+require '../classes/player.rb'
 
 class Devil < Player
   def run
