@@ -1,14 +1,26 @@
-require './src/players/jesus.rb'
-require './src/players/devil.rb'
-require './src/classes/game.rb'
+# frozen_string_literal: true
 
+require 'zeitwerk'
+loader = Zeitwerk::Loader.new
+loader.push_dir('lib/classes')
+loader.push_dir('lib/players')
+loader.setup
 
-def main 
-  game = Game.new(3)
-  jesus = Jesus.new
-  devil = Devil.new
-  game.execute(jesus, devil)
-  p "jesus: #{jesus.points}, devil: #{devil.points}"
-end
+game = Game.new(3)
+jesus = Jesus.new
+devil = Devil.new
+tit = TitForTat.new
 
-main
+p 'jesus x devil'
+game.execute(jesus, devil)
+p "#{jesus.points}, #{devil.points}"
+p
+
+p 'jesus x tit'
+game.execute(jesus, tit)
+p "#{jesus.points}, #{tit.points}"
+p
+
+p 'devil x tit'
+game.execute(devil, tit)
+p "#{devil.points}, #{tit.points}"
